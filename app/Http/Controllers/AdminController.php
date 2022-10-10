@@ -8,5 +8,12 @@ use Symfony\Component\HttpFoundation\Session\Session;
 
 class AdminController extends Controller
 {
-    //
+    public function register(){
+        return "Register";
+    }
+
+    public function login(){
+        return "Login";
+    }
+
 }

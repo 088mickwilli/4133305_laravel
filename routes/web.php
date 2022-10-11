@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controller\BarChartController;
+use App\Http\Controller\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,3 +22,4 @@ Route::get('/', function () {
 Route::get('register',[AdminController::class,'register']);
 Route::get('login',[AdminController::class,'login']);
 Route::get('barchart',[BarChartController::class,'Barchart']);
+Route::get('member-pdf',[PDFController::class,'member-pdf'])->name('member-pdf');

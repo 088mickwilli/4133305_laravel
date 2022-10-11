@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controller\BarChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,4 @@ Route::get('/', function () {
 });
 Route::get('register',[AdminController::class,'register']);
 Route::get('login',[AdminController::class,'login']);
+Route::get('barchart',[BarChartController::class,'Barchart']);

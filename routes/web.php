@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\TempletController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\BarChartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,3 +30,4 @@ Route::get('panel',[AdminController::class,"panel"])->middleware('CheckLogin');
 Route::get('logout',[AdminController::class,"logout"]);
 Route::get('book',[BookController::class,'GetBook']);
 Route::get('book-pdf',[PdfController::class,'index'])->name('book-pdf');
+Route::get('barchart',[BarChartController::class,'Barchart']);

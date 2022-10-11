@@ -18,8 +18,8 @@ class BooksFactory extends Factory
     {
         return [
             'book'=>$this->faker->text(maxNbChars:10),
-            'name'=>$this->faker->name,
-            'country'=>$this->faker->country
+            'take'=>$this->faker->numberBetween(1,20),
+            'back'=>$this->faker->numberBetween(1,20)
         ];
     }
 }

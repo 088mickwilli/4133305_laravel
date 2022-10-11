@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\TempletController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,10 @@ use App\Http\Controllers\AdminController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/',[TempletController::class,'index']);
 Route::get('register',[AdminController::class,'register'])->middleware('NowLogin');
 Route::get('login',[AdminController::class,'login'])->middleware('NowLogin');
 Route::post('register-users',[AdminController::class,"registerUsers"])->name('register-users');

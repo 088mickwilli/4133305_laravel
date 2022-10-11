@@ -2,7 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\TempletController;
+use App\Http\Controllers\PdfController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,5 @@ Route::post('register-users',[AdminController::class,"registerUsers"])->name('re
 Route::post('login-users',[AdminController::class,"loginUsers"])->name('login-users');
 Route::get('panel',[AdminController::class,"panel"])->middleware('CheckLogin');
 Route::get('logout',[AdminController::class,"logout"]);
+Route::get('book',[BookController::class,'GetBook']);
+Route::get('book-pdf',[PdfController::class,'index'])->name('book-pdf');

@@ -22,3 +22,4 @@ Route::get('login',[AdminController::class,'login']);
 Route::post('register-users',[AdminController::class,"registerUsers"])->name('register-users');
 Route::post('login-users',[AdminController::class,"loginUsers"])->name('login-users');
 Route::get('panel',[AdminController::class,"panel"]);
+Route::get('logout',[AdminController::class,"logout"]);

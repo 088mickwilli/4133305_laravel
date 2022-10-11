@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use Symfony\Component\HttpFoundation\Session\Session;
+use Session;
 use App\Models\User;
 
 class AdminController extends Controller
@@ -45,7 +45,7 @@ class AdminController extends Controller
         $check = User::where('email','=',$request->email)->first();
         if($check){
             if(Hash::check($request->password,$check->password)){
-                $request->session()->put('loginUser',$check->id);
+                $request->session()->put('loginUsers',$check->id);
                 return redirect('panel');
             }else{
                 return back()->with('fail','รหัสผ่านหรืออีเมล์ไม่ถูกต้อง');
@@ -56,6 +56,18 @@ class AdminController extends Controller
     }
     //admin panel
     public function panel(){
-        return "ยินดีตอนรับสู่หน้าแอดมิน";
+        // return "ยินดีตอนรับสู่หน้าแอดมิน";
+        $user = array();
+        if(Session::has('loginUsers')){
+            $user = User::where('id','=',Session::get('loginUsers'))->first();
+        }
+        return view('panel',compact('user'));
+    }
+    //logout
+    public function logout(){
+        if(Session::has('loginUsers')){
+            Session::pull('loginUsers');
+            return redirect('login');
+        }
     }
 }

@@ -13,6 +13,15 @@
             <div class="col-md-4 col-md-offset-4">
                 <h3>Register</h3>
                 <form action="{{route('register-users')}}" method="POST" enctype="multipart/form-data">
+                    
+                @if(Session::has('success'))
+                <div class="alert alert-success" >{{Session::get('success')}}</div>
+                @endif
+
+                @if(Session::has('fail'))
+                    <div class="alert alert-danger" >{{Session::get('fail')}}</div>
+                @endif
+
                     @csrf
                     <div class="form-group">
                         <label for="name">ชื่อ-นามสกุล</label>

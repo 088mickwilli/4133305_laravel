@@ -31,9 +31,31 @@ class AdminController extends Controller
 
         $db = $user->save();
         if($db){
-            return back()->with('บันทึกสำเร็จ','บันทึกบัญชีผู้ใช้เรียบร้อยแล้ว');
+            return back()->with('success','บันทึกบัญชีผู้ใช้เรียบร้อยแล้ว');
         }else{
-            return back()->with('บันทึกไม่สำเร็จ','การบันทึกบัญชีผู้ใช้เกิดการขัดข้อง');
+            return back()->with('fail','บันทึกไม่สำเร็จ');
         }
+    }
+    //login
+    public function loginUsers(Request $request){
+        $request->validate([
+            'email'=>'required|email',
+            'password'=>'required|min:8'
+        ]);
+        $check = User::where('email','=',$request->email)->first();
+        if($check){
+            if(Hash::check($request->password,$check->password)){
+                $request->session()->put('loginUser',$check->id);
+                return redirect('panel');
+            }else{
+                return back()->with('fail','รหัสผ่านหรืออีเมล์ไม่ถูกต้อง');
+            }
+        }else{
+            return back()->with('fail','บัญชีอาจยังไม่ได้สมัครสมาชิก');
+        }
+    }
+    //admin panel
+    public function panel(){
+        return "ยินดีตอนรับสู่หน้าแอดมิน";
     }
 }

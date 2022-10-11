@@ -12,7 +12,8 @@
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
                 <h3>Register</h3>
-                <form action="" method="POST" enctype="multipart/form-data">
+                <form action="{{route('register-users')}}" method="POST" enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
                         <label for="name">ชื่อ-นามสกุล</label>
                         <input type="text" name="name" class="form-control" placeholder="กรุณากรอกชื่อ" value="{{old('name')}}">

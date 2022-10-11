@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 Route::get('register',[AdminController::class,'register']);
 Route::get('login',[AdminController::class,'login']);
+Route::post('register-users',[AdminController::class,"registerUsers"])->name('register-users');

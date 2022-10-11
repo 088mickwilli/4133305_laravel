@@ -17,9 +17,9 @@ use App\Http\Controllers\AdminController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('register',[AdminController::class,'register']);
-Route::get('login',[AdminController::class,'login']);
+Route::get('register',[AdminController::class,'register'])->middleware('NowLogin');
+Route::get('login',[AdminController::class,'login'])->middleware('NowLogin');
 Route::post('register-users',[AdminController::class,"registerUsers"])->name('register-users');
 Route::post('login-users',[AdminController::class,"loginUsers"])->name('login-users');
-Route::get('panel',[AdminController::class,"panel"]);
+Route::get('panel',[AdminController::class,"panel"])->middleware('CheckLogin');
 Route::get('logout',[AdminController::class,"logout"]);

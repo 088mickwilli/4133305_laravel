@@ -6,6 +6,7 @@ use App\Http\Controllers\BookController;
 use App\Http\Controllers\TempletController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\BarChartController;
+use App\Http\Controllers\MathController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,3 +32,5 @@ Route::get('logout',[AdminController::class,"logout"]);
 Route::get('book',[BookController::class,'GetBook']);
 Route::get('book-pdf',[PdfController::class,'index'])->name('book-pdf');
 Route::get('barchart',[BarChartController::class,'Barchart']);
+Route::get('Calculator',[MathController::class,'index']);
+Route::post('Calculator',[MathController::class,'Calculator'])->name('calculator.cal');
